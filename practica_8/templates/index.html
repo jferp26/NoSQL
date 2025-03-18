@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>MongoDB con Flask</title>
+    </head>
+    <body>
+        <h2>Lista de Personas</h2>
+
+        <form method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <button type="submit">Agregar</button>
+        </form>
+
+        <ul>
+            {% for persona in personas %}
+                <li>
+                    {{ persona.nombre }}
+                    <a href="{{ url_for('edit', id=persona._id) }}">Editar</a>
+                    <a href="{{ url_for('delete', id=persona._id) }}" onclick="return confirm('¿Eliminar?');">Eliminar</a>
+                </li>
+            {% endfor %}
+            </ul>
+    </body>
+</html>
+
